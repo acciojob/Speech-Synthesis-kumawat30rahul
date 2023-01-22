@@ -36,6 +36,26 @@
   const speakButton = document.querySelector('#speak');
   const stopButton = document.querySelector('#stop');
 
+  speakButton.addEventListener("click",() => {
+    let speakText = document.querySelector('[name="text"]')
+    let utterance = new SpeechSynthesisUtterance(speakText.textContent);
+    speechSynthesis.speak(utterance)
+  })
+
+  stopButton.addEventListener("click",() => {
+    speechSynthesis.cancel()
+  })
+
+  
+
+// Get all available voices
+const voicesOfPc = speechSynthesis.getVoices();
+console.log(voicesOfPc);
+voicesOfPc.forEach(voice => {
+  let newOption = document.createElement("option")
+  option.innerText = voice
+  option.name = voice
+})
   //Your code goes here
 </script>
 
